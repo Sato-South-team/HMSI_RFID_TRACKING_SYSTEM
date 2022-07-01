@@ -35,8 +35,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BUSINESS_LAYER">
+      <HintPath>..\BUSINESS_LAYER\bin\Debug\BUSINESS_LAYER.dll</HintPath>
+    </Reference>
+    <Reference Include="ENTITY_LAYER">
+      <HintPath>..\ENTITY_LAYER\bin\Debug\ENTITY_LAYER.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,18 +67,54 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="Masters\GroupMaster.xaml.cs">
+      <DependentUpon>GroupMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\UserMaster.xaml.cs">
+      <DependentUpon>UserMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartUp\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartUp\ForgotPassword.xaml.cs">
+      <DependentUpon>ForgotPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartUp\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartUp\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="CommonClasses\CommonMethods.cs" />
+    <Compile Include="CommonClasses\CommonVariable.cs" />
+    <Page Include="Masters\GroupMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Masters\UserMaster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartUp\ChangePassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartUp\ForgotPassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartUp\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="StartUp\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +141,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DashBoard\" />
+    <Folder Include="Report\" />
+    <Folder Include="Transaction\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back.png" />
+    <Resource Include="Images\Button.png" />
+    <Resource Include="Images\ChangePassword.jpg" />
+    <Resource Include="Images\Denso-Logo.png" />
+    <Resource Include="Images\forget-password .png" />
+    <Resource Include="Images\HorizantalLine.png" />
+    <Resource Include="Images\LogOut.png" />
+    <Resource Include="Images\SatoLogo.png" />
+    <Resource Include="Images\sql-server-icon-png-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

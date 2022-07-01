@@ -1,0 +1,289 @@
+﻿<Page x:Class="MOLDING_INTEGRATION_SYSTEM.Masters.ProductionCheckSheetMaster"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MOLDING_INTEGRATION_SYSTEM.Masters"
+      mc:Ignorable="d" 
+      Title="ProductionCheckSheetMaster" KeyDown="Window_KeyDown" Loaded="Window_Loaded" Unloaded="Page_Unloaded" Background="White">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top" >
+                <!--<Image Name="image3" Stretch="Fill" VerticalAlignment="Top" Margin="0,0,0,0" Height="55" Width="180"  Source="/Voltas_WIP;component/Images/HorizantalLine.png"/>-->
+                <TextBlock TextDecorations="UNDERLINE" Text="PRODUCTION CHECK SHEET MASTER" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="23" Margin="5" Foreground="OrangeRed" FontWeight="ExtraBold" ></TextBlock>
+            </Grid>
+            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="7,58,7,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="570"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="{Binding}"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding}"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Style="{StaticResource BorderStyle}" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="0"  >
+                    <Grid Margin="7" Name="grid1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="146"/>
+                            <ColumnDefinition Width="385"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="35"></RowDefinition>
+                            <RowDefinition Height="35"></RowDefinition>
+                            <RowDefinition Height="35"></RowDefinition>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="95"/>
+                            <RowDefinition Height="95"/>
+                            <RowDefinition Height="35"/>
+                        </Grid.RowDefinitions>
+                        <ComboBox Grid.Column="1" x:Name="cmbMachine" SelectionChanged="CmbMachine_SelectionChanged" Margin="2,0,0,37" Grid.RowSpan="2" Height="Auto" />
+                        <ComboBox Grid.Column="1" x:Name="cmbCheckSheetType" SelectionChanged="CmbCheckSheetType_SelectionChanged_1" Grid.Row="1" Margin="2,5,0,39" Height="Auto" Grid.RowSpan="2" >
+                            <ComboBoxItem>BALANCING CHECK SHEET</ComboBoxItem>
+                            <ComboBoxItem>CHILLER CHECK SHEET</ComboBoxItem>
+                            <ComboBoxItem>PARAMETER CHECK SHEET</ComboBoxItem>
+                            <ComboBoxItem>QUALITY CHECK SHEET</ComboBoxItem>
+                            <ComboBoxItem>INSTRUMENT CHECK SHEET</ComboBoxItem>
+                            <!--<ComboBoxItem>WELDING CHECK SHEET</ComboBoxItem>-->
+                        </ComboBox>
+                        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cmbModelNo" SelectionChanged="CmbModelNo_SelectionChanged"  />
+                        <!--<TextBox IsReadOnly="True" Grid.Row="3" Grid.Column="1" x:Name="txtPartNo"   />-->
+                        <ComboBox Grid.Row="3" Grid.Column="1" x:Name="cmbPartNo" SelectionChanged="CmbPartNo_SelectionChanged"  />
+
+                        <TextBox Grid.Column="1" x:Name="txtDescription"  Grid.Row="4" />
+                        <TextBox Grid.Column="1" x:Name="txtcategory"  Grid.Row="5"  />
+                        <TextBox Grid.Column="1" x:Name="txtstandard"  Grid.Row="6" />
+                        <TextBox Grid.Column="1" x:Name="txtInstrument"  Grid.Row="7" />
+                        <TextBox Grid.Column="1" x:Name="txtImtNo"  Grid.Row="8"  />
+                        <TextBox Grid.Column="1" x:Name="txtFrequency"  Grid.Row="9" />
+                        <DatePicker Grid.Column="1" BorderBrush="Transparent" Grid.Row="10"  x:Name="dtpcalidoneon"  />
+                        <DatePicker Grid.Column="1" BorderBrush="Transparent" Grid.Row="11" x:Name="dtpcalidueon" />
+
+                        <Button Content="BROWSE" Height="50" HorizontalAlignment="Right" Margin="0,0,0,40" x:Name="btnbrowse" VerticalAlignment="Top" Grid.Column="1"  Grid.Row="12" Click="Btnbrowse_Click"  />
+                        <Button Content="CLEAR"  Grid.Column="1" HorizontalAlignment="Right" x:Name="btnimgClear" Margin="0,50,0,0" Grid.Row="12" Click="BtnimgClear_Click" VerticalAlignment="Top"/>
+
+                        <Border Margin="5,5,223,0" Height="85" Background="Transparent" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="12"  >
+                            <Image   Stretch="Uniform" x:Name="imgModel"  />
+                        </Border>
+                        <Button Content="BROWSE" Height="50" HorizontalAlignment="Right" Margin="0,0,0,0" x:Name="btnbrowse1" VerticalAlignment="Top" Grid.Column="1" Grid.Row="13"   Click="Btnbrowse1_Click"  />
+                        <Button Content="CLEAR"   Grid.Column="1"  x:Name="btnimgClear1" Margin="0,50,0,0" HorizontalAlignment="Right" Grid.Row="13" Click="BtnimgClear1_Click" />
+                        <Border Margin="5,5,223,0" Background="Transparent" BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="13" >
+                            <Image   Stretch="Uniform" x:Name="freqimgModel"  />
+                        </Border>
+                        <TextBox x:Name="txtRemarks" Grid.Column="1"  Grid.Row="14"/>
+
+                        <Label Grid.Column="0"  Content="Machine No:"    />
+                        <Label Grid.Row="2" Grid.Column="0"  Content="Model Name:"     />
+                        <Label Grid.Column="0" Content="Check Sheet Type:"  Grid.Row="1"  />
+                        <Label Grid.Row="5" Grid.Column="0" Content="Category:" />
+                        <Label Grid.Row="4"  Grid.Column="0"  Content="Descriptions:"   />
+                        <Label Grid.Row="6"  Grid.Column="0"  Content="Standard:"  />
+                        <Label Grid.Row="7"  Grid.Column="0"  Content="Instrument:"  />
+                        <Label Grid.Row="12" Grid.Column="0" Content="Image:"   />
+                        <Label Grid.Row="3" Grid.Column="0"  Content="Part No:" />
+                        <Label Grid.Row="10"  Grid.Column="0"  Content="Calibration Done on:" />
+                        <Label Grid.Row="11"  Grid.Column="0"  Content="Calibration Due on:"  />
+
+                        <Label Grid.Row="9"  Grid.Column="0"  Content="Frequency:" />
+                        <Label Grid.Row="8"  Grid.Column="0"  Content="ImteNo:" />
+                        <Label Grid.Row="13" Grid.Column="0" Content="Reference Image:"    />
+                        <Label Grid.Row="14"  Grid.Column="0"  Content="Remarks:" />
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource BorderStyle}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,690,0,0" Grid.Column="0" Height="100">
+                    <Grid Margin="7">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="105"></ColumnDefinition>
+                            <ColumnDefinition Width="105"></ColumnDefinition>
+                            <ColumnDefinition Width="105"></ColumnDefinition>
+                            <ColumnDefinition Width="105"></ColumnDefinition>
+                            <ColumnDefinition Width="105"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="SAVE" ToolTip="Press Alt+S for Save"  x:Name="btnSave" Click="btnSave_Click" TabIndex="4" >
+                        </Button>
+                        <Button Content="UPDATE"  ToolTip="Press Alt+U for Update" Grid.Column="1"  x:Name="btnUpdate" Click="btnUpdate_Click">
+                        </Button>
+                        <Button Content="DELETE"  ToolTip="Press Alt+D for Delete" Grid.Column="2"  x:Name="btnDelete" Click="btnDelete_Click">
+                        </Button>
+                        <Button Content="CLEAR"  ToolTip="Press Alt+C for Clear"  Grid.Column="3"  x:Name="btnClear" Click="btnClear_Click">
+                        </Button>
+                        <Button Content="EXIT"  ToolTip="Press Alt+E for Back" Grid.Column="4"  x:Name="btnExit" Click="btnExit_Click">
+                        </Button>
+                        <Button Content="CHECKER"  ToolTip="Press Alt+K for K"  x:Name="btnChecker" Grid.Column="0" Margin="0,45,0,-41" Height="41" Click="BtnChecker_Click"/>
+                        <Button Content="APPROVER"  ToolTip="Press Alt+A for A"  x:Name="btnApprover" Grid.Column="1" Height="41" Margin="0,45,0,-41"  Click="BtnApprover_Click"/>
+                        <Button Content="IMPORT"  ToolTip="Press Alt+I for I"  Grid.Column="4"  x:Name="btnImport"  Margin="0,45,0,-41" Height="41" Click="BtnImport_Click" />
+                        <Button Content="TEMPLATE"  ToolTip="Press Alt+T for T"  x:Name="btnTemplate" Margin="0,45,0,-41"  Height="41"  Grid.Column="3" Click="BtnTemplate_Click"/>
+                    </Grid>
+                </Border>
+
+                <Border  Style="{StaticResource BorderStyle}" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
+                    <Grid Margin="7">
+                        <DataGrid ToolTip="Single selection is for edit all columns and multiple selection is for delete data" x:Name="dvgMasterDeatils" SelectionChanged="dvgMasterDeatils_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}"  Binding="{Binding SLNO}" />
+                                <DataGridTextColumn Width="100" Header="  MACHINE NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding MachineNo}" />
+                                <DataGridTextColumn Width="120" Header="  MODEL NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding ModelNo}" />
+                                <DataGridTextColumn Width="100" Header=" PART NO  " ElementStyle="{StaticResource WrapText}" Binding="{Binding PartNo}" />
+                                <DataGridTextColumn Width="200" Header="  CHECK SHEET DESCRIPTION  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckSheetDescription}" />
+                                <DataGridTextColumn Width="150" Header="  STANDARD  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Standard}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckerRemarks}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckedOn}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApproverRemarks}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApprovedOn}" />
+                                <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden" ElementStyle="{StaticResource WrapText}" Binding="{Binding RefNo}" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+                <Border  Style="{StaticResource BorderStyle}" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
+                    <Grid Margin="7">
+                        <DataGrid ToolTip="Single selection is for edit all columns and multiple selection is for delete data" x:Name="dvgMasterDeatils1" SelectionChanged="DvgMasterDeatils1_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}"  Binding="{Binding SLNO}" />
+                                <DataGridTextColumn Width="100" Header="  MACHINE NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding MachineNo}" />
+                                <DataGridTextColumn Width="200" Header="  CHECK SHEET DESCRIPTION  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckSheetDescription}" />
+                                <DataGridTextColumn Width="100" Header="  STANDARD  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Standard}" />
+
+                                <DataGridTextColumn Width="100" Header=" CHECKER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckerRemarks}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckedOn}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApproverRemarks}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApprovedOn}" />
+                                <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden" ElementStyle="{StaticResource WrapText}" Binding="{Binding RefNo}" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+                <Border  Style="{StaticResource BorderStyle}" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
+                    <Grid Margin="7">
+                        <DataGrid ToolTip="Single selection is for edit all columns and multiple selection is for delete data" x:Name="dvgMasterDeatils2" SelectionChanged="DvgMasterDeatils2_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}"  Binding="{Binding SLNO}" />
+                                <DataGridTextColumn Width="100" Header="  MACHINE NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding MachineNo}" />
+                                <DataGridTextColumn Width="120" Header="  MODEL NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding ModelNo}" />
+                                <DataGridTextColumn Width="200" Header="  CHECK SHEET DESCRIPTION  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckSheetDescription}" />
+                                <DataGridTextColumn Width="150" Header="  STANDARD  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Standard}" />
+                                <DataGridTextColumn Width="120" Header=" CATEGORY  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Category}" />
+
+                                <DataGridTextColumn Width="100" Header=" CHECKER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckerRemarks}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckedOn}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApproverRemarks}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApprovedOn}" />
+                                <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden" ElementStyle="{StaticResource WrapText}" Binding="{Binding RefNo}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+                <Border  Style="{StaticResource BorderStyle}" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
+                    <Grid Margin="7">
+                        <DataGrid ToolTip="Single selection is for edit all columns and multiple selection is for delete data" x:Name="dvgMasterDeatils3" SelectionChanged="DvgMasterDeatils3_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}"  Binding="{Binding SLNO}" />
+                                <DataGridTextColumn Width="100" Header="  MACHINE NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding MachineNo}" />
+                                <DataGridTextColumn Width="120" Header="  MODEL NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding ModelNo}" />
+                                <DataGridTextColumn Width="100" Header=" PART NO  "  ElementStyle="{StaticResource WrapText}" Binding="{Binding PartNo}" />
+                                <DataGridTextColumn Width="200" Header=" CHECK SHEET DESCRIPTION  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckSheetDescription}" />
+                                <DataGridTextColumn Width="200" Header="  STANDARD  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Standard}" />
+                                <DataGridTemplateColumn Header=" IMAGE " >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Height="60" Width="60" Source="{Binding PartImage}"   />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header=" REFERENCE IMAGE " >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Height="60" Width="60" Source="{Binding RefPartImage}"   />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Width="100" Header=" CHECKER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckerRemarks}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckedOn}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApproverRemarks}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApprovedOn}" />
+                                <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden" ElementStyle="{StaticResource WrapText}" Binding="{Binding RefNo}" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+                <Border  Style="{StaticResource BorderStyle}" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
+                    <Grid Margin="7">
+                        <DataGrid ToolTip="Single selection is for edit all columns and multiple selection is for delete data" x:Name="dvgMasterDeatils4" SelectionChanged="DvgMasterDeatils4_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}"  Binding="{Binding SLNO}" />
+                                <DataGridTextColumn Width="100" Header="  MACHINE NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding MachineNo}" />
+                                <!--<DataGridTextColumn Width="100" Header="  MODEL NAME " ElementStyle="{StaticResource WrapText}" Binding="{Binding ModelName}" />-->
+
+                                <DataGridTextColumn Width="120" Header="  INSTRUMENT " ElementStyle="{StaticResource WrapText}" Binding="{Binding InstrumentName}" />
+                                <DataGridTextColumn Width="100" Header=" IMTE NO  "  ElementStyle="{StaticResource WrapText}" Binding="{Binding ImteNo}" />
+                                <DataGridTextColumn Width="120" Header="  CALIBRATION DONE ON " ElementStyle="{StaticResource WrapText}" Binding="{Binding CalibrationDoneOn}" />
+                                <DataGridTextColumn Width="100" Header=" CALIBRATION DUE NO  "  ElementStyle="{StaticResource WrapText}" Binding="{Binding CalibrationDueOn}" />
+                                <DataGridTextColumn Width="200" Header=" CHECK SHEET DESCRIPTION  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckDecription}" />
+                                <DataGridTextColumn Width="200" Header="  FREQUENCY  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Frequency}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckerRemarks}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckedOn}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApproverRemarks}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApprovedOn}" />
+
+                                <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden" ElementStyle="{StaticResource WrapText}" Binding="{Binding RefNo}" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+                <Border  Style="{StaticResource BorderStyle}" Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="2" Grid.Row="0">
+                    <Grid Margin="7">
+                        <DataGrid ToolTip="Single selection is for edit all columns and multiple selection is for delete data" x:Name="dvgMasterDeatils5" SelectionChanged="DvgMasterDeatils5_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}"  Binding="{Binding SLNO}" />
+                                <DataGridTextColumn Width="100" Header="  MACHINE NO " ElementStyle="{StaticResource WrapText}" Binding="{Binding MachineNo}" />
+                                <DataGridTextColumn Width="120" Header="  MODEL NAME " ElementStyle="{StaticResource WrapText}" Binding="{Binding ModelName}" />
+                                <DataGridTextColumn Width="100" Header=" DESCRIPTION  "  ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckDecription}" />
+                                <DataGridTextColumn Width="200" Header="  STANDARD  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Standard}" />
+                                <DataGridTextColumn Width="200" Header="  INSTURMENTS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Instruments}" />
+                                <DataGridTemplateColumn Header=" IMAGE " >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Height="60" Width="60" Source="{Binding Images}"   />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Header=" REFERENCE IMAGE " >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Height="60" Width="60" Source="{Binding RefPartImage}"   />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Width="100" Header=" CHECKER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckerRemarks}" />
+                                <DataGridTextColumn Width="100" Header=" CHECKED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding CheckedOn}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVER REMARKS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApproverRemarks}" />
+                                <DataGridTextColumn Width="150" Header=" APPROVED ON  " ElementStyle="{StaticResource WrapText}" Binding="{Binding ApprovedOn}" />
+                                <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden" ElementStyle="{StaticResource WrapText}" Binding="{Binding RefNo}" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
+    
+
+

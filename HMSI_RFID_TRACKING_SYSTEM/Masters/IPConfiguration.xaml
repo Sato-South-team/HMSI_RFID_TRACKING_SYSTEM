@@ -1,0 +1,132 @@
+﻿<Page x:Class="MOLDING_INTEGRATION_SYSTEM.Masters.IPConfiguration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:MOLDING_INTEGRATION_SYSTEM.Masters"
+      Loaded="Window_Loaded" KeyDown="Window_KeyDown" Unloaded="Page_Unloaded" Title="IPConfiguration" Background="White">
+    <Grid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock TextDecorations="UNDERLINE" Text="IP CONFIGURATION" HorizontalAlignment="Center"
+                 FontFamily="Times New Roman" FontSize="23" Margin="5" Foreground="OrangeRed" FontWeight="ExtraBold"/>
+        </Grid>
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,40,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="540"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="{Binding}"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding}"/>
+            </Grid.RowDefinitions>
+            <Border Style="{StaticResource BorderStyle}" VerticalAlignment="Top" HorizontalAlignment="Center"
+              Grid.Column="0" Grid.Row="0">
+                <Grid Name="grid1" Margin="7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="154"/>
+                        <ColumnDefinition Width="280"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox Name="cmbHARDTYPE" Grid.Row="0" Grid.Column="1">
+                        <ComboBoxItem>PLC</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox x:Name="cmbLinename" Grid.Row="1" Grid.Column="1" SelectionChanged="CmbLinename_SelectionChanged"/>
+                    <TextBox Name="txtIP" Grid.Row="2" Grid.Column="1"/>
+                    <TextBox Name="txtportNo" Grid.Column="1" Grid.Row="3" MaxLength="3"/>
+                    <ComboBox x:Name="cmbProcessType" Grid.Row="4" Grid.Column="1">
+                        <ComboBoxItem>Alaram</ComboBoxItem>
+                        <ComboBoxItem>Close Time</ComboBoxItem>
+                        <ComboBoxItem>Communication</ComboBoxItem>
+                        <ComboBoxItem>Cycle Close</ComboBoxItem>
+                        <ComboBoxItem>Cycle Start</ComboBoxItem>
+                        <ComboBoxItem>Hopper</ComboBoxItem>
+                        <ComboBoxItem>Loading Time Out</ComboBoxItem>
+                        <ComboBoxItem>Open Time</ComboBoxItem>
+                        <ComboBoxItem>PM Qty</ComboBoxItem>
+                        <ComboBoxItem>Program Memory</ComboBoxItem>
+                        <ComboBoxItem>Short Count</ComboBoxItem>
+                        <ComboBoxItem>Tank Open</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox x:Name="txtPlcvalue" Grid.Row="5" Grid.Column="1"/>
+                    <TextBox x:Name="txtplcaddress" Grid.Column="1" Grid.Row="6" MaxLength="3"/>
+                    <ComboBox x:Name="cmbplcmethod" Grid.Row="8" Grid.Column="1">
+                        <ComboBoxItem>Hopper A</ComboBoxItem>
+                        <ComboBoxItem>Hopper B</ComboBoxItem>
+                        <ComboBoxItem>Memory</ComboBoxItem>
+                        <ComboBoxItem>Read</ComboBoxItem>
+                        <ComboBoxItem>Write</ComboBoxItem>
+                    </ComboBox>
+                    <Label Grid.Row="8" Grid.Column="0" Content="PLC Methods :"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="PLC Value :"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="PLC Adddress :"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="Process Type :"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Hardware Type:"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="IP Address :"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Port No :"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Machine No:"/>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource BorderStyle}" VerticalAlignment="Top" HorizontalAlignment="Center"
+              Margin="0,305,0,0" Grid.Column="0" Grid.Row="0">
+                <Grid Margin="7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="105"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Click="btnSave_Click" x:Name="btnSave" Content="SAVE" ToolTip="Press Alt+S for Save" TabIndex="3"/>
+                    <Button Click="btnUpdate_Click" x:Name="btnUpdate" Content="UPDATE" ToolTip="Press Alt+U for Update"
+                  Grid.Column="1"/>
+                    <Button Click="btnDelete_Click" x:Name="btnDelete" Content="DELETE" ToolTip="Press Alt+D for Delete"
+                  Grid.Column="2"/>
+                    <Button Click="btnClear_Click" x:Name="btnClear" Content="CLEAR" ToolTip="Press Alt+C for Clear"
+                  Grid.Column="3"/>
+                    <Button Click="btnExit_Click" x:Name="btnExit" Content="EXIT" ToolTip="Press Alt+E for Back"
+                  Grid.Column="4"/>
+                </Grid>
+            </Border>
+            <Border Style="{StaticResource BorderStyle}" Margin="0,0,0,10" VerticalAlignment="Stretch"
+              HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
+                <Grid Margin="7">
+                    <DataGrid SelectionChanged="dvgMasterDeatils_SelectionChanged" x:Name="dvgMasterDeatils"
+                    ToolTip="Single selection is for edit all columns and multiple selection is for delete data">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}" Binding="{Binding SLNO}"/>
+                            <DataGridTextColumn Width="auto" Header="  HARDWARE TYPE " ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding HardwareType}"/>
+                            <DataGridTextColumn Width="auto" Header="  MACHINE NO " ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding LineName}"/>
+                            <DataGridTextColumn Width="auto" Header="  IP ADDRESS  " ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding IPaddress}"/>
+                            <DataGridTextColumn Width="auto" Header=" PORT NO  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Port}"/>
+                            <DataGridTextColumn Width="auto" Header="  PLC ADDRESS " ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding PLCAddress}"/>
+                            <DataGridTextColumn Width="auto" Header="  PROCESS TYPE " ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding ProcessType}"/>
+                            <DataGridTextColumn Width="auto" Header="  PLC VALUE  " ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding PLCValue}"/>
+                            <DataGridTextColumn Width="auto" Header=" PLC METHOD  " ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding PLCMethode}"/>
+                            <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden" ElementStyle="{StaticResource WrapText}"
+                                  Binding="{Binding RefNo}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

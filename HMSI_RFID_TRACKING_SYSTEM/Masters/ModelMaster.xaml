@@ -1,0 +1,138 @@
+﻿<Page x:Class="MOLDING_INTEGRATION_SYSTEM.Masters.ModelMaster"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MOLDING_INTEGRATION_SYSTEM.Masters"
+       Title="ProductMaster" Loaded="Window_Loaded"  KeyDown="Window_KeyDown" Unloaded="Page_Unloaded" 
+Background="White" >
+    <Grid>
+
+
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <!--<Image Name="image3" Stretch="Fill" VerticalAlignment="Top" Margin="0,0,0,0" Height="55" Width="180"  Source="/Voltas_WIP;component/Images/HorizantalLine.png"/>-->
+            <TextBlock TextDecorations="UNDERLINE" Text="PRODUCT MASTER" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="23" Margin="5" Foreground="OrangeRed" FontWeight="ExtraBold" ></TextBlock>
+
+        </Grid>
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="7,50,7,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="540"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="{Binding}"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding}"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Style="{StaticResource BorderStyle}" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" >
+                <Grid Margin="7,6,7,8" Name="grid1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="134"></ColumnDefinition>
+                        <ColumnDefinition Width="280"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="90"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition/>
+
+                    </Grid.RowDefinitions>
+
+                    <ComboBox Grid.Row="0" Grid.Column="1" Name="cmbModelName" SelectionChanged="CmbModelName_SelectionChanged"  ></ComboBox>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Name="cmbDieType"  >
+                        <ComboBoxItem>P TANK</ComboBoxItem>
+                        <ComboBoxItem>R/T</ComboBoxItem>
+                        <ComboBoxItem>HVAC</ComboBoxItem>
+                        <ComboBoxItem>ECM FAN</ComboBoxItem>
+                        <ComboBoxItem>ECM FAN</ComboBoxItem>
+                        <ComboBoxItem>ECM SHROUD</ComboBoxItem>
+
+                    </ComboBox>
+
+                    <TextBox Grid.Column="1" Name="txtDiename" Grid.Row="2"  />
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="txtPartNo"   />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtPartName"    />
+                    <Border Background="Transparent" Grid.Row="5" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="0,0,110,0" >
+                        <Image  Stretch="Uniform" Name="imgModel"/>
+                    </Border>
+                    <CheckBox x:Name="chkstatus" Grid.Column="1" Grid.Row="6"  />
+                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtnoofcavity"  />
+                    <TextBox Grid.Row="8" Grid.Column="1" x:Name="txtnoofPuls"   />
+                    
+                    <Label Grid.Row="0" Grid.Column="0"  Content="Model Name:" />
+                    <Label Grid.Row="1" Grid.Column="0"  Content="Die Type:"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="DieName :"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Part No :" />
+                    <Label Grid.Row="4" Grid.Column="0" Content="Part Name :"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="Model Image :"/>
+                    <Label Grid.Row="6" Grid.Column="0"  Content="Status :"   />
+                    <Button Content="Browse" HorizontalAlignment="Right"  Name="btnbrowse" VerticalAlignment="Top" Width="100" Grid.Column="1" Grid.Row="5" Click="Btnbrowse_Click" />
+                    <Button Content="CLEAR"  ToolTip="Press Alt+C for Clear"  Grid.Column="1"  x:Name="btnimgClear" HorizontalAlignment="Right" Margin="0,50,0,0" Grid.Row="5"  Click="BtnimgClear_Click"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="No of Cavity :" />
+                    <Label Grid.Row="8" Grid.Column="0" Content="No of Puls :" />
+                    
+                </Grid>
+            </Border>
+
+            <Border Style="{StaticResource BorderStyle}" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,405,0,0" Grid.Column="0" Grid.Row="0">
+                <Grid Margin="7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="105"></ColumnDefinition>
+                        <ColumnDefinition Width="105"></ColumnDefinition>
+                        <ColumnDefinition Width="105"></ColumnDefinition>
+                        <ColumnDefinition Width="105"></ColumnDefinition>
+                        <ColumnDefinition Width="105"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="SAVE" ToolTip="Press Alt+S for Save"  x:Name="btnSave" Click="btnSave_Click" TabIndex="4">
+                    </Button>
+                    <Button Content="UPDATE"  ToolTip="Press Alt+U for Update" Grid.Column="1"  x:Name="btnUpdate" Click="btnUpdate_Click">
+                    </Button>
+                    <Button Content="DELETE"  ToolTip="Press Alt+D for Delete" Grid.Column="2"  x:Name="btnDelete" Click="btnDelete_Click">
+                    </Button>
+                    <Button Content="CLEAR"  ToolTip="Press Alt+C for Clear"  Grid.Column="3"  x:Name="btnClear" Click="btnClear_Click">
+                    </Button>
+                    <Button Content="EXIT"  ToolTip="Press Alt+E for Back" Grid.Column="4"  x:Name="btnExit" Click="btnExit_Click">
+                    </Button>
+                </Grid>
+            </Border>
+
+            <Border  Style="{StaticResource BorderStyle}" Margin="0,0,0,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
+                <Grid Margin="7">
+
+                    <DataGrid ToolTip="Single selection is for edit all columns and multiple selection is for delete data" x:Name="dvgMasterDeatils" SelectionChanged="dvgMasterDeatils_SelectionChanged" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="auto" Header="  SL.NO  " ElementStyle="{StaticResource WrapText}"  Binding="{Binding SLNO}" />
+                            <DataGridTextColumn Width="auto" Header="  MODEL NAME " ElementStyle="{StaticResource WrapText}" Binding="{Binding ModelName}" />
+                            <DataGridTextColumn Width="auto" Header="  DIE TYPE  " ElementStyle="{StaticResource WrapText}" Binding="{Binding DieType}" />
+                            <DataGridTextColumn Width="auto" Header="  DIE NAME  " ElementStyle="{StaticResource WrapText}" Binding="{Binding DieName}" />
+                            <DataGridTextColumn Width="auto" Header=" PART NO  " ElementStyle="{StaticResource WrapText}" Binding="{Binding PartNo}" />
+                            <DataGridTextColumn Width="auto" Header=" PART NAME  " ElementStyle="{StaticResource WrapText}" Binding="{Binding PartName}" />
+                            <DataGridTextColumn Width="auto" Header=" NO OF CAVITY  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Noofcavity}" />
+                            <DataGridTextColumn Width="auto" Header=" NO OF PULS  " ElementStyle="{StaticResource WrapText}" Binding="{Binding Noofpuls}" />
+                            <DataGridTextColumn Width="auto" Header="  STATUS  "  ElementStyle="{StaticResource WrapText}" Binding="{Binding Status}" />
+                            <DataGridTextColumn Width="auto" Header=" MODULE IMAGE  " Visibility="Hidden"  ElementStyle="{StaticResource WrapText}" Binding="{Binding ModuleImage}" />
+                            <DataGridTextColumn Width="auto" Header="  REFNO  " Visibility="Hidden"  ElementStyle="{StaticResource WrapText}" Binding="{Binding RefNo}" />
+                            <DataGridTemplateColumn Header="MODULE IMAGE" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Height="25" Width="50" Source="{Binding ModuleImage}"   />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
+
+
+
